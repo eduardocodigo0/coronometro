@@ -9,8 +9,7 @@ import tkinter as tk
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
 from matplotlib.backend_bases import key_press_handler
 from matplotlib.figure import Figure
-
-
+import numpy as np
 
 
 
@@ -215,10 +214,28 @@ for d in data:
         usa.append(d[2])
 
 
+brazil = np.asarray(brazil)
+italy = np.asarray(italy)
+portugal = np.asarray(portugal)
+china = np.asarray(china)
+usa = np.asarray(usa)
+
+brazil = np.char.replace(brazil, ",", ".")
+italy = np.char.replace(italy, ",", ".")
+portugal = np.char.replace(portugal, ",", ".")
+china = np.char.replace(china, ",", ".")
+usa = np.char.replace(usa, ",", ".")
+
+brazil = brazil.astype(float)
+italy = italy.astype(float)
+portugal = portugal.astype(float)
+china = china.astype(float)
+usa = usa.astype(float)
 
 fig = Figure(figsize=(7, 5), dpi=100)
-fig.add_subplot(111).set_xlabel("TIME")
-fig.add_subplot(111).set_ylabel("Infected Number")
+
+fig.add_subplot(111).set_xlabel("Time Line")
+fig.add_subplot(111).set_ylabel("Infected Number(thousands)")
 fig.add_subplot(111).plot(date, brazil, color='green')
 fig.add_subplot(111).plot(date, italy, color='yellow')
 fig.add_subplot(111).plot(date, portugal, color='pink')
@@ -271,8 +288,3 @@ for i, d in enumerate(data):
 
 
 window.mainloop()
-
-
-
-
-
