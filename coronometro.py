@@ -101,7 +101,7 @@ def update_objects(countryes, country_list):
         d[0] = re.sub(r'║', '', d[0])
         d[0] = re.sub(r'\s+', ' ', d[0])
         details = d[0].split(" ")
-        country_list[i].update(details[2], details[3], details[5], details[7])
+        country_list[i].update(details[2], details[4], details[6], details[8])
 
 
 def select_all(conn):
@@ -146,8 +146,16 @@ def request_data():
         d[0] = re.sub(r'║', '', d[0])
         d[0] = re.sub(r'\s+', ' ', d[0])
         details = d[0].split(" ")
+        
         #print(details)
-        country_list.append(Country(details[2], details[3], details[5], details[7]))
+        
+        country_list.append(Country(details[2], details[4], details[6], details[8]))
+        
+        
+            
+
+
+
 
 
     update_objects(countryes, country_list)
